@@ -1,0 +1,75 @@
+{
+  "name": "magic-hour-ai-provider",
+  "version": "0.1.0",
+  "description": "Magic Hour provider for the AI SDK — Sora 2, Veo 3.1, Kling 3.0, Seedance and more via experimental_generateVideo and generateImage.",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "^4.0.0",
+    "@ai-sdk/provider-utils": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ai": "^7.0.74",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0",
+    "zod": "^3.25.0"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "magic-hour",
+    "video-generation",
+    "text-to-video",
+    "image-to-video",
+    "sora",
+    "veo",
+    "kling",
+    "seedance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RhythmP28/magic-hour-ai-provider.git"
+  },
+  "homepage": "https://github.com/RhythmP28/magic-hour-ai-provider",
+  "bugs": {
+    "url": "https://github.com/RhythmP28/magic-hour-ai-provider/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
