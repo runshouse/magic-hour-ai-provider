@@ -178,7 +178,7 @@ Anything under `providerOptions.magicHour` that isn't listed below is forwarded 
 
 ## Behaviour worth knowing
 
-- **Polling is the SDK's job, not this package's.** The video model implements `doStart`/`doStatus`, so `generateVideo` owns the loop and you can tune it with `poll: { intervalMs }`. Magic Hour has no webhook mechanism, so `handleWebhookOption` is deliberately absent — the SDK won't stand up an endpoint that would never be called.
+- **Polling is the SDK's job, not this package's.** The video model implements `doStart`/`doStatus`, so `generateVideo` owns the loop and you can tune it with `poll: { intervalMs }`. This provider currently uses polling and does not implement `handleWebhookOption`. Magic Hour also supports [project webhooks](https://docs.magichour.ai/integration/webhook/overview) for integrations that manage completion callbacks directly.
 - **Failed renders are auto-refunded** by Magic Hour, so an error costs nothing. The error message says so.
 - **One clip per call.** `n > 1` warns and returns one video; call `generateVideo` again for more.
 - **`fps` and `seed` are ignored** with a warning — Magic Hour doesn't expose either for video.
