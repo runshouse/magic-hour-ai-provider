@@ -230,9 +230,9 @@ export class MagicHourVideoModel implements VideoModelV4 {
         response,
       };
     } catch (error) {
-      // A transport hiccup mid-poll shouldn't kill a render that's still
-      // running, but a 4xx is a real answer — surface it.
-      if (APICallError.isInstance(error)) {
+      // Let the SDK retry transient polling failures; surface only
+      // non-retryable API errors as terminal results.
+      if (APICallError.isInstance(error) && !error.isRetryable) {
         return {
           status: 'error',
           error: error.message,
